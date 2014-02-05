@@ -1,0 +1,117 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: CSPLog
+scopeName: text.csplog
+fileTypes: [csplog]
+firstLineMatch: '^>>> Time:'
+uuid: a955f7a4-a116-4876-bdcf-9d76e89da8b6
+
+repository:
+  http-headers:
+    comment: request/response headers
+    match: ^\s*([A-Z-a-z\-]+):\s*(.*?)$
+    captures: 
+     '1': {name: storage.type.csplog}
+     '2': {name: string.quoted.csplog}
+  request-headers:
+    comment: HTTP verb line 
+    begin: ^\s*([A-Za-z]+)\s([A-Za-z0-9/%\-\.]+)\s(HTTP)(/)(\d\.\d)$
+    end: ^\s*$
+    captures:
+     '1': {name: support.function.csplog}
+     '2': {name: string.quoted.csplog}
+     '3': {name: support.function.csplog}
+     '4': {name: keyword.operator.csplog}
+     '5': {name: support.function.csplog}
+    patterns:
+    - {include: '#http-headers'}
+  response-headers:
+    comment: HTTP Response line
+    begin: ^\s*(HTTP)(/)(\d\.\d)\s([0-9]{3})\s([A-Za-z\ ]+)$
+    end: ^\s*$
+    captures:
+     '1': {name: support.function.csplog}
+     '2': {name: keyword.operator.csplog}
+     '3': {name: support.function.csplog}
+     '4': {name: constant.numeric.csplog}
+     '5': {name: variable.language.csplog}
+    patterns:
+    - {include: '#http-headers'}
+  buffer-headers:
+    begin: '\G:'
+    end: $
+    patterns:
+    - {include: '#buffer-header'}
+    - {include: '#buffer-checksum'}
+  buffer-header:
+    match: ([A-Za-z]+)\s*(=)\s*([A-Za-z0-9_]+)\s*(\([A-Za-z_]+\))?\s*
+    captures:
+     '1': {name: storage.type.csplog}
+     '3': {name: string.quoted.csplog}
+     '4': {name: constant.numeric.csplog}
+  buffer-checksum:
+    match: ([A-Fa-f0-9]+):([A-Fa-f0-9]+):([A-Fa-f0-9]+):([A-Fa-f0-9]+)
+    captures:
+     '1': {name: string.quoted.csplog}
+     '2': {name: string.quoted.csplog}
+     '3': {name: string.quoted.csplog}
+     '4': {name: string.quoted.csplog}
+  unmatched: 
+    match: ^.*?$
+    name: comment.line.csplog
+patterns:
+- comment: message block
+  begin: ^>(?=>>)
+  end: (?<=^>>>)
+  name: keyword.operator.csplog
+  patterns:
+  - comment: header line
+    begin: \G>>
+    end: $
+    patterns:
+    - comment: header value
+      match: ([\sA-Za-z\-]+):\s*([^;]+)(;|$)
+      captures: 
+       '1': {name: entity.name.csplog}
+       '2': {name: variable.language.csplog}
+  - comment: HTTP Request or Response (EV9R)
+    begin: (^\s*HTTP\s(Request|Response)\s*$)
+    end: ^(?=>>>)
+    name: support.function.csplog
+    patterns:
+    - {include: '#request-headers'}
+    - {include: '#response-headers'}
+    - {include: '#unmatched'}
+  - comment: Request Buffer Header
+    begin: ^\s*(Request Buffer Header)
+    end: ^(?=>>>)
+    beginCaptures:
+     '1': {name: support.function.csplog}
+    patterns:
+    - {include: '#buffer-headers'}
+    - comment: value
+      match: ^.*?$
+      name: string.quoted.csplog
+    - {include: '#unmatched'}
+  - comment: Response Buffer Header
+    begin: ^\s*(Response Buffer Header)
+    end: ^(?=>>>)
+    beginCaptures:
+     '1': {name: support.function.csplog}
+    patterns:
+    - match: '^\s*CacheSP'
+      name: support.function.csplog
+    - {include: '#buffer-headers'}
+    - {include: '#response-headers'}
+    - {include: '#unmatched'}
+  - comment: Request Header
+    begin: ^\s*(Request Header)\s*$
+    end: ^(?=>>>)
+    beginCaptures:
+     '1': {name: support.function.csplog}
+    patterns:
+    - match: '^\s*\^([A-Za-z])([0-9]+)'
+      captures:
+       '1': {name: storage.type.csplog}
+       '2': {name: constant.numeric.csplog}
+...
