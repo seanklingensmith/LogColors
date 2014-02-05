@@ -75,7 +75,7 @@ patterns:
        '1': {name: entity.name.csplog}
        '2': {name: variable.language.csplog}
   - comment: HTTP Request or Response (EV9R)
-    begin: (^\s*HTTP\s(Request|Response)\s*$)
+    begin: (^\s*HTTP\s(Request|Response|Headers)\s*$)
     end: ^(?=>>>)
     name: support.function.csplog
     patterns:
@@ -114,4 +114,15 @@ patterns:
       captures:
        '1': {name: storage.type.csplog}
        '2': {name: constant.numeric.csplog}
+  - comment: Misc Headers and Footers
+    begin: ^\s*((Cache Footers)\s*$)|((Cache Headers) (\(([0-9]+)\))?)\s*$
+    end: ^(?=>>>)
+    beginCaptures:
+     '2': {name: support.function.csplog}
+     '4': {name: support.function.csplog}
+     '6': {name: string.quoted.csplog}
+    patterns:
+    - match: '^\s*CacheSP'
+      name: support.function.csplog
+    - {include: '#buffer-headers'}
 ...
