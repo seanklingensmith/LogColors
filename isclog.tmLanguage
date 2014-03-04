@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
 	<array>
 		<string>isclog</string>
 	</array>
+	<key>firstLineMatch</key>
+	<string>^\^\%ISCLOG</string>
 	<key>name</key>
 	<string>ISCLOG</string>
 	<key>patterns</key>
@@ -57,6 +59,69 @@
 			<string>data counter</string>
 			<key>match</key>
 			<string>^(\^\%ISCLOG\(\"Data\"\))\s*(=)\s*([0-9]+)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.isclog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.isclog</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.isclog</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.isclog</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.isclog</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Filter</string>
+			<key>match</key>
+			<string>^(\^\%ISCLOG\((\"(Category|Job|Tag)\")(,(\"?.*?\"?))?\))\s*(=)\s*([0-9]+)</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.isclog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.isclog</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.isclog</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.isclog</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>MaxLogEntries filter</string>
+			<key>match</key>
+			<string>^(\^\%ISCLOG\((\"MaxLogEntries\")\))\s*(=)\s*([0-9]+)</string>
 		</dict>
 		<dict>
 			<key>begin</key>
