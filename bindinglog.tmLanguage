@@ -93,7 +93,7 @@
 			<key>comment</key>
 			<string>Raw Data line</string>
 			<key>match</key>
-			<string>^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*(.{1,14})\s*$</string>
+			<string>^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})*)\s*(.{0,14})\s*$</string>
 		</dict>
 		<dict>
 			<key>begin</key>

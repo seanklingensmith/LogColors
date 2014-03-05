@@ -25,7 +25,7 @@ patterns:
     match: ^(.*)$
     name: constant.numeric.text.bindinglog
 - comment: Raw Data line
-  match: ^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*(.{1,14})\s*$
+  match: ^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})*)\s*(.{0,14})\s*$
   captures:
     '1': {name: support.function.text.bindinglog}
     '2': {name: constant.numeric.text.bindinglog}
