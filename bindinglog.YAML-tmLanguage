@@ -1,0 +1,142 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: ISC Binding log
+scopeName: text.bindinglog
+fileTypes: [log]
+firstLineMatch: ^\s*(=-)+\s*$
+uuid: 3ffb065b-8538-4167-b773-ae0a4ae9455f
+
+patterns:
+- comment: header
+  begin: ^\s*((=-)+)\s*$
+  end: ^\s*((=-)+)\s*$
+  beginCaptures:
+    '1': {name: comment.line.text.bindinglog}
+  endCaptures:
+    '1': {name: comment.line.text.bindinglog}
+  patterns:
+  - comment: key-value pair
+    match: ^\s*([A-Za-z ]+)(:)(.*?)$
+    captures:
+      '1': {name: variable.language.text.bindinglog}
+      '2': {name: keyword.operator.text.bindinglog}
+      '3': {name: storage.type.text.bindinglog}
+  - comment: other values
+    match: ^(.*)$
+    name: constant.numeric.text.bindinglog
+- comment: Raw Data line
+  match: ^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*(.{1,14})\s*$
+  captures:
+    '1': {name: support.function.text.bindinglog}
+    '2': {name: constant.numeric.text.bindinglog}
+    '4': {name: string.quoted.text.bindinglog}
+- comment: Sent/Received Line
+  begin: ^\s*(Sent|Received)(:)
+  captures:
+    '1': {name: entity.name.text.bindinglog}
+    '2': {name: keyword.operator.text.bindinglog}
+  end: $
+  patterns:
+  - {include: '#timestamp'}
+  - {include: '#attr'}
+- comment: Message metadata
+  begin: ^\s*(>>|<<)\s*([A-Za-z_ ]+)
+  end: $
+  captures:
+    '1': {name: keyword.operator.text.bindinglog}
+    '2': {name: support.text.bindinglog}
+  patterns:
+  - {include: '#timestamp'}
+  - match: ":"
+    name: keyword.operator.text.bindinglog
+  - match: .
+    name: storage.type.text.bindinglog
+- comment: msgId
+  match: ^\s*(msgId)(:)\s(\d+)\s*$
+  captures:
+    '1': {name: support.text.bindinglog}
+    '2': {name: keyword.operator.text.bindinglog}
+    '3': {name: storage.type.text.bindinglog}
+- match: ^\s*((Server|Client)\s(Header|Message))(:)\s*$
+  captures:
+    '1': {name: entity.name.text.bindinglog}
+    '4': {name: keyword.operator.text.bindinglog}
+- begin: ^\s*(<<>>)
+  end: $
+  beginCaptures:
+    '1': {name: keyword.operator.text.bindinglog}
+  patterns:
+  - {include: '#key-value-pair'}
+- begin: ^\s*(-->|<--)\s*([A-Za-z]+)(:)
+  end: $
+  beginCaptures:
+    '1': {name: keyword.operator.text.bindinglog}
+    '2': {name: entity.name.text.bindinglog}
+    '3': {name: keyword.operator.text.bindinglog}
+  patterns:
+  - match: ((?i)Returning)\s([0-9\-]+(,\s[0-9\-]+)*)
+    captures:
+      '1': {name: support.text.bindinglog}
+      '2': {name: constant.numeric.text.bindinglog}
+  - {include: '#timestamp'}
+  - {include: '#odbc-key-value-pair'}
+  - match: ","
+    name: keyword.operator.text.bindinglog
+- comment: sql
+  begin: (\*\*\*)
+  end: (\*\*\*)
+  beginCaptures:
+    '1': {name: variable.language.bindinglog}
+  endCaptures:
+    '1': {name: variable.language.text.bindinglog}
+  patterns:
+  - {include: source.sql}
+- {include: '#key-value-pair'}
+- {include: '#odbc-key-value-pair2'}
+- {include: '#timestamp'}
+- {include: '#attr'}
+repository:
+  timestamp:
+    begin: (\()
+    end: (\))
+    beginCaptures:
+      '1': {name: keyword.operator.text.bindinglog}
+    endCaptures:
+      '1': {name: keyword.operator.text.bindinglog}
+    patterns:
+    - match: \d
+      name: storage.type.text.bindinglog
+    - match: ":"
+      name: keyword.operator.text.bindinglog
+  attr:
+    begin: (\[)
+    end: (\])
+    beginCaptures:
+      '1': {name: keyword.operator.text.bindinglog}
+    endCaptures:
+      '1': {name: keyword.operator.text.bindinglog}
+    patterns:
+    - match: ([A-Za-z ]+)\s*(=)\s*([A-Za-z0-9-]+)
+      captures: 
+        '1': {name: entity.name.text.bindinglog}
+        '2': {name: keyword.operator.text.bindinglog} 
+        '3': {name: storage.type.text.bindinglog}
+  key-value-pair:
+    match: ([A-Za-z_ ]+)\s*(:)\s*([A-Za-z0-9:\\\./\(\)'", ]+)
+    captures: 
+      '1': {name: entity.name.text.bindinglog}
+      '2': {name: keyword.operator.text.bindinglog} 
+      '3': {name: storage.type.text.bindinglog}
+  odbc-key-value-pair:
+    match: ([A-Za-z_ ]+)\s*(=)\s*([A-Za-z0-9\-,]*)
+    captures: 
+      '1': {name: entity.name.text.bindinglog}
+      '2': {name: keyword.operator.text.bindinglog} 
+      '3': {name: storage.type.text.bindinglog}
+  odbc-key-value-pair2:
+    match: ^\s*([A-Za-z_ ]+)\s*(=)\s*(.*?)\s*$
+    captures: 
+      '1': {name: support.text.bindinglog}
+      '2': {name: keyword.operator.text.bindinglog} 
+      '3': {name: storage.type.text.bindinglog}
+...
