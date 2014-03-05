@@ -86,7 +86,9 @@
 			<string>^\s*([0-9A-F]{4}:)\s*$</string>
 		</dict>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -98,16 +100,30 @@
 					<key>name</key>
 					<string>constant.numeric.text.bindinglog</string>
 				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>string.quoted.text.bindinglog</string>
-				</dict>
 			</dict>
 			<key>comment</key>
 			<string>Raw Data line</string>
-			<key>match</key>
-			<string>^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*(.{1,14})\s*$</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>foo</string>
+					<key>match</key>
+					<string>\.</string>
+					<key>name</key>
+					<string>comment.line.text.bindinglog</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>foo</string>
+					<key>match</key>
+					<string>.</string>
+					<key>name</key>
+					<string>string.quoted.text.bindinglog</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>begin</key>

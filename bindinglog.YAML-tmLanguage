@@ -29,11 +29,18 @@ patterns:
   captures:
     '1': {name: support.function.text.bindinglog}
 - comment: Raw Data line
-  match: ^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*(.{1,14})\s*$
-  captures:
+  begin: ^\s*([0-9A-F]{4}:\s)?((\s{1,2}[0-9A-F]{2})+)\s*
+  end: $
+  beginCaptures:
     '1': {name: support.function.text.bindinglog}
     '2': {name: constant.numeric.text.bindinglog}
-    '4': {name: string.quoted.text.bindinglog}
+  patterns:
+  - comment: foo
+    match: \.
+    name: comment.line.text.bindinglog
+  - comment: foo
+    match: .
+    name: string.quoted.text.bindinglog
 - comment: Sent/Received Line
   begin: ^\s*(Sent|Received)(:)
   captures:
