@@ -9,7 +9,7 @@ uuid: a955f7a4-a116-4876-bdcf-9d76e89da8b6
 repository:
   http-headers:
     comment: request/response headers
-    match: ^\s*([A-Z-a-z\-]+):\s*(.*?)$
+    match: ^\s*([A-Z-a-z\-_]+):\s*(.*?)$
     captures: 
      '1': {name: storage.type.csplog}
      '2': {name: string.quoted.csplog}

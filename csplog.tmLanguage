@@ -344,7 +344,7 @@
 			<key>comment</key>
 			<string>request/response headers</string>
 			<key>match</key>
-			<string>^\s*([A-Z-a-z\-]+):\s*(.*?)$</string>
+			<string>^\s*([A-Z-a-z\-_]+):\s*(.*?)$</string>
 		</dict>
 		<key>request-headers</key>
 		<dict>
