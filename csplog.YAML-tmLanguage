@@ -73,7 +73,7 @@ patterns:
       match: ([\sA-Za-z\-]+):\s*([^;]+)(;|$)
       captures: 
        '1': {name: entity.name.csplog}
-       '2': {name: variable.language.csplog}
+       '2': {name: variable.parameter.csplog}
   - comment: HTTP Request or Response (EV9R)
     begin: (^\s*HTTP\s(Request|Response|Headers)\s*$)
     end: ^(?=>>>)
@@ -125,4 +125,12 @@ patterns:
     - match: '^\s*CacheSP'
       name: support.function.csplog
     - {include: '#buffer-headers'}
+  - comment: Default - make a guess
+    begin: ^(.*)$
+    end: (?=>>>)
+    beginCaptures:
+     '1': {name: support.function.csplog}
+    patterns:
+    - {include: '#response-headers'}
+    - {include: '#request-headers'}
 ...
