@@ -78,7 +78,7 @@ patterns:
     '1': {name: keyword.operator.text.bindinglog}
   patterns:
   - {include: '#key-value-pair'}
-- begin: ^\s*(-->|<--)\s*([A-Za-z]+)(:)
+- begin: ^\s*(-->|<--)\s*([A-Za-z.]+)(:)
   end: $
   beginCaptures:
     '1': {name: keyword.operator.text.bindinglog}
@@ -90,7 +90,7 @@ patterns:
       '1': {name: support.text.bindinglog}
       '2': {name: constant.numeric.text.bindinglog}
   - {include: '#timestamp'}
-  - {include: '#odbc-key-value-pair'}
+  - {include: '#attr'}
   - match: ","
     name: keyword.operator.text.bindinglog
 - comment: sql
