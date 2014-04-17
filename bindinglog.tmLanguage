@@ -77,6 +77,35 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
+					<string>string.quoted.text.bindinglog</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.text.bindinglog</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*((Server|Client)\s(Header|Message))(:)\s*$</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.text.bindinglog</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(((?i)Get Pooled Connection)|((?i)Return Connection to pool))\s*$</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
 					<string>support.function.text.bindinglog</string>
 				</dict>
 			</dict>
@@ -220,23 +249,6 @@
 			<string>msgId</string>
 			<key>match</key>
 			<string>^\s*(msgId)(:)\s(\d+)\s*$</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.text.bindinglog</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.text.bindinglog</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>^\s*((Server|Client)\s(Header|Message))(:)\s*$</string>
 		</dict>
 		<dict>
 			<key>begin</key>

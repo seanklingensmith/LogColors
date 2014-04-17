@@ -24,6 +24,13 @@ patterns:
   - comment: other values
     match: ^(.*)$
     name: constant.numeric.text.bindinglog
+- match: ^\s*((Server|Client)\s(Header|Message))(:)\s*$
+  captures:
+    '1': {name: string.quoted.text.bindinglog}
+    '4': {name: keyword.operator.text.bindinglog}
+- match: ^\s*(((?i)Get Pooled Connection)|((?i)Return Connection to pool))\s*$
+  captures:
+    '1': {name: string.quoted.text.bindinglog}
 - comment: Raw Data Offset, with no data (.NET GTW)
   match: ^\s*([0-9A-F]{4}:)\s*$
   captures:
@@ -68,10 +75,6 @@ patterns:
     '1': {name: support.text.bindinglog}
     '2': {name: keyword.operator.text.bindinglog}
     '3': {name: storage.type.text.bindinglog}
-- match: ^\s*((Server|Client)\s(Header|Message))(:)\s*$
-  captures:
-    '1': {name: entity.name.text.bindinglog}
-    '4': {name: keyword.operator.text.bindinglog}
 - begin: ^\s*(<<>>)
   end: $
   beginCaptures:
