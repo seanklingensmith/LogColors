@@ -379,7 +379,7 @@
 			<key>comment</key>
 			<string>DotNet SQL</string>
 			<key>end</key>
-			<string>^\s*(?=CommandBehavior:)</string>
+			<string>^\s*(?=([A-Za-z]+):)</string>
 			<key>patterns</key>
 			<array>
 				<dict>

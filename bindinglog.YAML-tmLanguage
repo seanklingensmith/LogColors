@@ -110,7 +110,7 @@ patterns:
   beginCaptures:
     '1': {name: entity.name.text.bindinglog}
     '2': {name: keyword.operator.text.bindinglog}
-  end: ^\s*(?=CommandBehavior:)
+  end: ^\s*(?=([A-Za-z]+):)
   patterns:
   - {include: source.sql}
 - {include: '#key-value-pair'}
