@@ -36,11 +36,12 @@ patterns:
   captures:
     '1': {name: support.function.text.bindinglog}
 - comment: Raw Data line
-  begin: ^\s*([0-9A-F]{4}:\s)?((\s{0,3}[0-9A-F]{1,3})+)\s+
+  begin: ^\s*([0-9A-F]{4}:\s)?((\s{0,3}[0-9A-F]{1,3}(-[0-9]{1,3})?)+)\s+
   end: $
   beginCaptures:
     '1': {name: support.function.text.bindinglog}
     '2': {name: constant.numeric.text.bindinglog}
+    '4': {name: constant.numeric.text.bindinglog}
   patterns:
   - comment: foo
     match: \.
