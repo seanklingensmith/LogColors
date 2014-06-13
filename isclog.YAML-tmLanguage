@@ -19,7 +19,7 @@ patterns:
     '2': {name: keyword.operator.isclog}
     '3': {name: constant.numeric.isclog}
 - comment: Filter
-  match: ^(\^\%ISCLOG\((\"(Category|Job|Tag)\")(,(\"?.*?\"?))?\))\s*(=)\s*([0-9]+)
+  match: ^(\^\%ISCLOG\((\"(Category|Job|Tag|ErrorDetail)\")(,(\"?.*?\"?))?\))\s*(=)\s*([0-9]+)
   captures:
     '1': {name: comment.line.isclog}
     '2': {name: variable.language.isclog}
@@ -114,11 +114,12 @@ patterns:
     '2': {name: keyword.operator.isclog}
     '3': {name: comment.line.isclog}
 - comment: data entry
-  begin: ^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0\))\s*(=) #(.*?)$
+  begin: ^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0(\,(.*?))?\))\s*(=) #(.*?)$
   end: $
   beginCaptures:
     '1': {name: comment.line.isclog}
-    '2': {name: keyword.operator.isclog}
+    '3': {name: variable.language.isclog}
+    '4': {name: keyword.operator.isclog}
   name: string.quoted.double.isclog
   patterns:
   - match: (\"|^)(.*?)(=)(.*)\"

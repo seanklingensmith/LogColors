@@ -92,7 +92,7 @@
 			<key>comment</key>
 			<string>Filter</string>
 			<key>match</key>
-			<string>^(\^\%ISCLOG\((\"(Category|Job|Tag)\")(,(\"?.*?\"?))?\))\s*(=)\s*([0-9]+)</string>
+			<string>^(\^\%ISCLOG\((\"(Category|Job|Tag|ErrorDetail)\")(,(\"?.*?\"?))?\))\s*(=)\s*([0-9]+)</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -335,7 +335,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0\))\s*(=)</string>
+			<string>^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0(\,(.*?))?\))\s*(=)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -343,7 +343,12 @@
 					<key>name</key>
 					<string>comment.line.isclog</string>
 				</dict>
-				<key>2</key>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.isclog</string>
+				</dict>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.isclog</string>
