@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
-	<array>
-		<string>log</string>
-	</array>
+	<array/>
 	<key>firstLineMatch</key>
 	<string>^\s*(=-)+\s*$</string>
 	<key>name</key>

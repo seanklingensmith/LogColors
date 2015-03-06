@@ -2,7 +2,7 @@
 ---
 name: ISC Binding log
 scopeName: text.bindinglog
-fileTypes: [log]
+fileTypes: []
 firstLineMatch: ^\s*(=-)+\s*$
 uuid: 3ffb065b-8538-4167-b773-ae0a4ae9455f
 
