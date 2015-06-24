@@ -6,19 +6,19 @@ fileTypes: [cconsole.log]
 uuid: 3eb14823-af59-4c28-afb8-566277e30636
 
 patterns:
-- begin: ^([0-9]{2}(\/)[0-9]{2}(\/)[0-9]{2})(-)([0-9]{2}(:)[0-9]{2}(:)[0-9]{2}(:)[0-9]{3}) (\(([0-9]+)\))
+- begin: ^([0-9]{2}(\/)[0-9]{2}((\/)[0-9]{2})?)(-)([0-9]{2}(:)[0-9]{2}(:)[0-9]{2}(:)[0-9]{3}) (\(([0-9]+)\))
   end: $
   beginCaptures: 
     '1': {name: entity.name.tag.cclog}
     '2': {name: comment.line.cclog}
-    '3': {name: comment.line.cclog}
     '4': {name: comment.line.cclog}
-    '5': {name: keyword.cclog}
-    '6': {name: comment.line.cclog}
+    '5': {name: comment.line.cclog}
+    '6': {name: keyword.cclog}
     '7': {name: comment.line.cclog}
     '8': {name: comment.line.cclog}
     '9': {name: comment.line.cclog}
-    '10': {name: support.class.cclog}
+    '10': {name: comment.line.cclog}
+    '11': {name: support.class.cclog}
   patterns:
   - comment: Priority Low
     match: 0 .*
