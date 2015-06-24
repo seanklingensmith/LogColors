@@ -1,0 +1,50 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: cconsolelog
+scopeName: text.cclog
+fileTypes: [cconsole.log]
+uuid: 3eb14823-af59-4c28-afb8-566277e30636
+
+patterns:
+- begin: ^([0-9]{2}(\/)[0-9]{2}(\/)[0-9]{2})(-)([0-9]{2}(:)[0-9]{2}(:)[0-9]{2}(:)[0-9]{3}) (\(([0-9]+)\))
+  end: $
+  beginCaptures: 
+    '1': {name: entity.name.tag.cclog}
+    '2': {name: comment.line.cclog}
+    '3': {name: comment.line.cclog}
+    '4': {name: comment.line.cclog}
+    '5': {name: keyword.cclog}
+    '6': {name: comment.line.cclog}
+    '7': {name: comment.line.cclog}
+    '8': {name: comment.line.cclog}
+    '9': {name: comment.line.cclog}
+    '10': {name: support.class.cclog}
+  patterns:
+  - comment: Priority Low
+    match: 0 .*
+    name: string.quoted.cclog
+  - comment: Priority Medium
+    match: 1 .*
+    name: storage.type.cclog
+  - comment: Priority High
+    match: 2 .*
+    name: constant.other.cclog
+  - comment: Priority Higher
+    match: 3 .*
+    name: invalid.illegal.cclog
+- comment: Recovery started
+  begin: ^(\*\*\*.*)
+  end: ((?i)Exiting.*)$
+  beginCaptures:
+    '1': {name: constant.other.cclog}
+  endCaptures:
+    '1': {name: constant.other.cclog}
+  name: string.quoted.cclog
+- comment: cstart
+  match: ^((?i)CSTART of)(.*)
+  captures:
+    '1': {name: constant.other.cclog}
+    '2': {name: storage.type.cclog}
+- match: ^[^0-9].*$
+  name: string.quoted.cclog
+...

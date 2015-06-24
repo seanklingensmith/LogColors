@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>cconsole.log</string>
+	</array>
+	<key>name</key>
+	<string>cconsolelog</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>begin</key>
+			<string>^([0-9]{2}(\/)[0-9]{2}(\/)[0-9]{2})(-)([0-9]{2}(:)[0-9]{2}(:)[0-9]{2}(:)[0-9]{3}) (\(([0-9]+)\))</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.cclog</string>
+				</dict>
+				<key>10</key>
+				<dict>
+					<key>name</key>
+					<string>support.class.cclog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.cclog</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+				<key>9</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.cclog</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>Priority Low</string>
+					<key>match</key>
+					<string>0 .*</string>
+					<key>name</key>
+					<string>string.quoted.cclog</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Priority Medium</string>
+					<key>match</key>
+					<string>1 .*</string>
+					<key>name</key>
+					<string>storage.type.cclog</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Priority High</string>
+					<key>match</key>
+					<string>2 .*</string>
+					<key>name</key>
+					<string>constant.other.cclog</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Priority Higher</string>
+					<key>match</key>
+					<string>3 .*</string>
+					<key>name</key>
+					<string>invalid.illegal.cclog</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\*\*\*.*)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.cclog</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Recovery started</string>
+			<key>end</key>
+			<string>((?i)Exiting.*)$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.cclog</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.cclog</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.other.cclog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.cclog</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>cstart</string>
+			<key>match</key>
+			<string>^((?i)CSTART of)(.*)</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^[^0-9].*$</string>
+			<key>name</key>
+			<string>string.quoted.cclog</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>text.cclog</string>
+	<key>uuid</key>
+	<string>3eb14823-af59-4c28-afb8-566277e30636</string>
+</dict>
+</plist>
