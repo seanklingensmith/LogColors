@@ -65,6 +65,21 @@ patterns:
   end: (?<=^>>>)
   name: keyword.operator.csplog
   patterns:
+  - comment: backtrace
+    begin: ^(\s+Backtrace) \((.*?)\) (\:) (.*?)$
+    end: (?=>>>)
+    beginCaptures: 
+     '1': {name: support.function.csplog}
+     '2': {name: constant.csplog}
+     '4': {name: support.type.csplog}
+    patterns:
+    - match: ^(\s*(/.*/)(.*?))\((.*?)\+([A-Za-z0-9]+)\)\s\[([A-Za-z0-9]+)\]$
+      captures:
+       '1': {name: support.function.csplog}
+       '3': {name: entity.name.csplog}
+       '4': {name: support.type.csplog}
+       '5': {name: string.quoted.csplog}
+       '6': {name: string.quoted.csplog}
   - comment: header line
     begin: \G>>
     end: $

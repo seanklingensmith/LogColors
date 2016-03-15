@@ -25,6 +25,67 @@
 			<array>
 				<dict>
 					<key>begin</key>
+					<string>^(\s+Backtrace) \((.*?)\) (\:) (.*?)$</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.csplog</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.csplog</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>support.type.csplog</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>backtrace</string>
+					<key>end</key>
+					<string>(?=&gt;&gt;&gt;)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>support.function.csplog</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.csplog</string>
+								</dict>
+								<key>4</key>
+								<dict>
+									<key>name</key>
+									<string>support.type.csplog</string>
+								</dict>
+								<key>5</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.csplog</string>
+								</dict>
+								<key>6</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.csplog</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>^(\s*(/.*/)(.*?))\((.*?)\+([A-Za-z0-9]+)\)\s\[([A-Za-z0-9]+)\]$</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>\G&gt;&gt;</string>
 					<key>comment</key>
 					<string>header line</string>
