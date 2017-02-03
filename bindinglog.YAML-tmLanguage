@@ -112,7 +112,7 @@ patterns:
   beginCaptures:
     '1': {name: entity.name.text.bindinglog}
     '2': {name: keyword.operator.text.bindinglog}
-  end: ^\s*(?=([A-Za-z]+):)
+  end: (^\s*(?=([A-Za-z]+):))|(^\s*(?=(-->|<--)))
   patterns:
   - {include: source.sql}
 - {include: '#complex-key-value-pair'}

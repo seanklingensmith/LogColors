@@ -386,7 +386,7 @@
 			<key>comment</key>
 			<string>DotNet SQL</string>
 			<key>end</key>
-			<string>^\s*(?=([A-Za-z]+):)</string>
+			<string>(^\s*(?=([A-Za-z]+):))|(^\s*(?=(--&gt;|&lt;--)))</string>
 			<key>patterns</key>
 			<array>
 				<dict>
