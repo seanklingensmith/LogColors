@@ -401,6 +401,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#cpp-key-value-pair</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#timestamp</string>
 		</dict>
 		<dict>
@@ -484,7 +488,72 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>([A-Za-z_ ]*)\s*(:|=)\s*([A-Za-z0-9:_\\\-\.\(\)\%\&gt;\&lt;,'"&amp; ]*)(;)?</string>
+			<string>([A-Za-z_ ]*)\s*(:|=)\s*([A-Za-z0-9:_\\\-\.\(\)\%\&gt;\&lt;,'"&amp;\/ ]*)(;)?</string>
+		</dict>
+		<key>cpp-key-value-pair</key>
+		<dict>
+			<key>begin</key>
+			<string>(C\+\+ Binding)(:)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.text.bindinglog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.text.bindinglog</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(Function)(:) ([a-zA-z0-9\_]+)(\(\),)\s(Thread\sID)(:)\s([0-9]+)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.text.bindinglog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.text.bindinglog</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.text.bindinglog</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.text.bindinglog</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.text.bindinglog</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.text.bindinglog</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.text.bindinglog</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#timestamp</string>
+				</dict>
+			</array>
 		</dict>
 		<key>key-value-pair</key>
 		<dict>

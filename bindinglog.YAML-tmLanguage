@@ -116,6 +116,7 @@ patterns:
   patterns:
   - {include: source.sql}
 - {include: '#complex-key-value-pair'}
+- {include: '#cpp-key-value-pair'}
 - {include: '#timestamp'}
 - {include: '#attr'}
 repository:
@@ -151,12 +152,28 @@ repository:
       '2': {name: keyword.operator.text.bindinglog} 
       '3': {name: storage.type.text.bindinglog}
   complex-key-value-pair:
-    match: ([A-Za-z_ ]*)\s*(:|=)\s*([A-Za-z0-9:_\\\-\.\(\)\%\>\<,'"& ]*)(;)?
+    match: ([A-Za-z_ ]*)\s*(:|=)\s*([A-Za-z0-9:_\\\-\.\(\)\%\>\<,'"&\/ ]*)(;)?
     captures: 
       '1': {name: entity.name.text.bindinglog}
       '2': {name: keyword.operator.text.bindinglog}
       '3': {name: storage.type.text.bindinglog}
       '4': {name: keyword.operator.text.bindinglog}
+  cpp-key-value-pair:
+    begin: (C\+\+ Binding)(:)
+    end: (Function)(:) ([a-zA-z0-9\_]+)(\(\),)\s(Thread\sID)(:)\s([0-9]+)
+    beginCaptures: 
+      '1': {name: entity.name.text.bindinglog}
+      '2': {name: keyword.operator.text.bindinglog} 
+    endCaptures:
+      '1': {name: entity.name.text.bindinglog}
+      '2': {name: keyword.operator.text.bindinglog} 
+      '3': {name: storage.type.text.bindinglog}
+      '4': {name: keyword.operator.text.bindinglog}
+      '5': {name: entity.name.text.bindinglog}
+      '6': {name: keyword.operator.text.bindinglog} 
+      '7': {name: constant.numeric.text.bindinglog}
+    patterns:
+      - {include: '#timestamp'}
   odbc-key-value-pair:
     match: ([A-Za-z_ ]+)\s*(=)\s*([A-Za-z0-9\-]*)
     captures: 
