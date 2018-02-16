@@ -7,7 +7,7 @@
 		<string>isclog</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>^\^\%ISCLOG</string>
+	<string>^\^(\%)?ISCLOG</string>
 	<key>name</key>
 	<string>ISCLOG</string>
 	<key>patterns</key>
@@ -44,12 +44,12 @@
 					<key>name</key>
 					<string>comment.line.isclog</string>
 				</dict>
-				<key>2</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.isclog</string>
 				</dict>
-				<key>3</key>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>constant.numeric.isclog</string>
@@ -58,7 +58,7 @@
 			<key>comment</key>
 			<string>data counter</string>
 			<key>match</key>
-			<string>^(\^\%ISCLOG\(\"Data\"\))\s*(=)\s*([0-9]+)</string>
+			<string>^(\^(\%)?ISCLOG\(\"Data\"\))\s*(=)\s*([0-9]+)</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -125,7 +125,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\))(=)(\$(?i)lb)</string>
+			<string>^(\^(\%)?ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\))(=)(\$(?i)lb)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -133,12 +133,12 @@
 					<key>name</key>
 					<string>comment.line.isclog</string>
 				</dict>
-				<key>2</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.isclog</string>
 				</dict>
-				<key>3</key>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>comment.line.isclog</string>
@@ -335,7 +335,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0(\,(.*?))?\))\s*(=)</string>
+			<string>^(\^(\%)?ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0(\,(.*?))?\))\s*(=)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -343,12 +343,12 @@
 					<key>name</key>
 					<string>comment.line.isclog</string>
 				</dict>
-				<key>3</key>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>variable.language.isclog</string>
 				</dict>
-				<key>4</key>
+				<key>5</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.isclog</string>

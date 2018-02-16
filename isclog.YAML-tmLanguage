@@ -4,7 +4,7 @@ name: ISCLOG
 scopeName: text.isclog
 fileTypes: [isclog]
 uuid: 853c4505-d59e-4e5c-8999-a5d709e779e2
-firstLineMatch: ^\^\%ISCLOG
+firstLineMatch: ^\^(\%)?ISCLOG
 patterns:
 - comment: log level
   match: ^(\^\%ISCLOG)\s*(=)\s*(([0-9])|\".*?\")\s*$
@@ -13,11 +13,11 @@ patterns:
     '2': {name: keyword.operator.isclog}
     '3': {name: constant.numeric.isclog}
 - comment: data counter
-  match: ^(\^\%ISCLOG\(\"Data\"\))\s*(=)\s*([0-9]+)
+  match: ^(\^(\%)?ISCLOG\(\"Data\"\))\s*(=)\s*([0-9]+)
   captures:
     '1': {name: comment.line.isclog}
-    '2': {name: keyword.operator.isclog}
-    '3': {name: constant.numeric.isclog}
+    '3': {name: keyword.operator.isclog}
+    '4': {name: constant.numeric.isclog}
 - comment: Filter
   match: ^(\^\%ISCLOG\((\"(Category|Job|Tag|ErrorDetail)\")(,(\"?.*?\"?))?\))\s*(=)\s*([0-9]+)
   captures:
@@ -34,7 +34,7 @@ patterns:
     '3': {name: keyword.operator.isclog}
     '4': {name: constant.numeric.isclog}
 - comment: new entry
-  begin: ^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\))(=)(\$(?i)lb) #\(([0-9]*|\".*?\"),([0-9]*|\".*?\"),([0-9]*|\".*?\"),.*\)\s*$
+  begin: ^(\^(\%)?ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\))(=)(\$(?i)lb) #\(([0-9]*|\".*?\"),([0-9]*|\".*?\"),([0-9]*|\".*?\"),.*\)\s*$
   end: (?<=\))$
   name: comment.line.isclog
   patterns:
@@ -111,15 +111,15 @@ patterns:
                       name: support.function.isclog
   captures:
     '1': {name: comment.line.isclog}
-    '2': {name: keyword.operator.isclog}
-    '3': {name: comment.line.isclog}
+    '3': {name: keyword.operator.isclog}
+    '4': {name: comment.line.isclog}
 - comment: data entry
-  begin: ^(\^\%ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0(\,(.*?))?\))\s*(=) #(.*?)$
+  begin: ^(\^(\%)?ISCLOG\(\"Data\"\s*,\s*[0-9]+\s*\,\s*0(\,(.*?))?\))\s*(=) #(.*?)$
   end: $
   beginCaptures:
     '1': {name: comment.line.isclog}
-    '3': {name: variable.language.isclog}
-    '4': {name: keyword.operator.isclog}
+    '4': {name: variable.language.isclog}
+    '5': {name: keyword.operator.isclog}
   name: string.quoted.double.isclog
   patterns:
   - match: (\"|^)(.*?)(=)(.*)\"
